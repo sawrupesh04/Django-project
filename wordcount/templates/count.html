@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>COUNT</title>
+    </head>
+    <body>
+        <h1>You have <span style="color: blue">{{ textList }}</span> words. </h1>
+
+        <a href="{% url 'home' %}">Start again</a>
+
+        <h1>Original words:</h1>
+        {{ text }}
+        <h1> worddict </h1>
+
+        {% for word, countotal in sortword %}
+        <span style="color: blue">{{ word }}</span> - <span style="color: green">{{ countotal }}</span>
+        <br>
+        
+
+        {% endfor %}
+
+        
+    </body>
+</html>
