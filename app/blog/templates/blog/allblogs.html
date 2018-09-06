@@ -1,0 +1,76 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+
+    <title>Rupes's Blog</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" 
+    integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+  </head>
+
+  <body>
+
+    <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="{% url 'home' %}">Rupesh <span style="color: #0099e6">Saw</span></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                <div class="collapse navbar-collapse" id="navbarNav">    
+                    <div class="navbar-nav ml-auto">
+                        <a class="nav-link" href="https://twitter.com/RupeshSaw7">Twitter</a> 
+                        <a class="nav-link" href="http://www.linkedin.com/in/rupeshsaw">LinkedIn</a>              
+                        <a class="nav-link" href="{% static 'Rupesh Saw.pdf' %}">Resume</a>                
+                        <a class="nav-link active" href="{% url 'allblogs' %}"><span style="color: #0099e6">Blog</span></a>                
+                    </div>
+                </div>
+            </nav>
+    </header>
+
+    <main role="main">
+        <div class="container">
+            <h1 class="text-center pt-3">Welcome to Rupesh's Blog</h1>
+            <br>
+            <br>
+            <h1>Latest Blogs</h1>
+            <hr>
+            <br>
+            {% for blog in blogs.all %}
+            <a href="{% url 'detail' blog.id %}"><h3>{{ blog.title }}</h3></a>
+            <h5>{{ blog.pub_date }}</h5>
+            <img class="img-fluid" src="{{ blog.image.url }}" height="200px" width="200px">
+            <br>
+
+            <p>{{ blog.body }}</p>
+            
+
+            {% endfor %}
+        </div>
+    </main>
+
+    <footer class="text-muted">
+      <div class="container text-center">
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+        <p>© Rupesh Saw {% now 'Y' %}</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  </body>
+</html>
